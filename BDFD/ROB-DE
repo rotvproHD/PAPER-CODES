@@ -1,0 +1,65 @@
+Variablen:
+money
+currency
+
+$if[$charCount[$message]>3]
+$if[$username!=$username[$mentioned[>]]]
+$if[$getUserVar[money;$mentioned[1]]>=20]
+$cooldown[16m;<:BOT_TIME:868872533519257700> Du hast noch einen **%time%** Cooldown]
+$title[<:BOT_THIEF:868904669102108692> RAUBÜBERFALL]
+$if[$random[1;4]==2]
+$description[**HÄNDE HOCH! RAUBÜBERFALL!**
+Du hast **$random[5;20]** $getServerVar[currency] von **$username[$mentioned[1]]** gestolen!]
+$setUserVar[money;$sum[$getUserVar[money];$random[5;20]]]
+$setUserVar[money;$sub[$getUserVar[money;$mentioned[1]];$random[5;20]];$mentioned[1]]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$else
+$if[$getUserVar[money]>=30]
+$description[**HÄNDE HOCH! POLIZEI!**
+Du wurdest erwischt als du $getServerVar[currency] von **$username[$mentioned[1]]** klauen wolltest!
+Du musstest **$random[10;30]** $getServerVar[currency] zu **$username[$mentioned[1]]** bezahlen und **4** $getServerVar[currency] zur **Polizei**!]
+$setUserVar[money;$sub[$getUserVar[money];$random[10;30];4]]
+$setUserVar[money;$sum[$getUserVar[money;$mentioned[1]];$random[10;30]];$mentioned[1]]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$else
+$description[**HÄNDE HOCH! POLIZEI!**
+Du wurdest erwischt als du $getServerVar[currency] von **$username[$mentioned[1]]** klauen wolltest!
+Du konntest **$random[10;30]** $getServerVar[currency] nicht zu **$username[$mentioned[1]]** und **4** $getServerVar[currency] der **Polizei** bezahlen!]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
+$endif
+$else
+$if[$isBot[$mentioned[1]]==false]
+$title[RAUBÜBERFALL]
+$description[**$username[$mentioned[1]]** ist zu Arm...]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$else
+$title[RAUBÜBERFALL]
+$description[**$username[$mentioned[1]]** ist ein Bot... ER IST ZU **MÄCHTIG**!]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
+$endif
+$else
+$title[RAUBÜBERFALL]
+$description[Du kannst dich selber nicht ausrauben...?]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
+$else
+$title[RAUBÜBERFALL]
+$description[Bitte mach ```g!rob <nutzer>```]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
