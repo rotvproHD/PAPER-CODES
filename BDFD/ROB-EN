@@ -1,0 +1,66 @@
+Variables:
+money
+currency
+
+
+$if[$charCount[$message]>3]
+$if[$username!=$username[$mentioned[>]]]
+$if[$getUserVar[money;$mentioned[1]]>=20]
+$cooldown[16m;<:BOT_TIME:868872533519257700> You still have a **%time%** Cooldown]
+$title[<:BOT_THIEF:868904669102108692> ROBBERY]
+$if[$random[1;4]==2]
+$description[**HANDYS UP! ROBBERY!**
+You stole **$random[5;20]** $getServerVar[currency] from **$username[$mentioned[1]]**!]
+$setUserVar[money;$sum[$getUserVar[money];$random[5;20]]]
+$setUserVar[money;$sub[$getUserVar[money;$mentioned[1]];$random[5;20]];$mentioned[1]]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$else
+$if[$getUserVar[money]>=30]
+$description[**HANDS UP! POLICE!**
+You got caught trying to steal $getServerVar[currency] from **$username[$mentioned[1]]**!
+You had to pay **$random[10;30]** $getServerVar[currency] to **$username[$mentioned[1]]** and **4** $getServerVar[currency] to the **Police**!]
+$setUserVar[money;$sub[$getUserVar[money];$random[10;30];4]]
+$setUserVar[money;$sum[$getUserVar[money;$mentioned[1]];$random[10;30]];$mentioned[1]]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$else
+$description[**HANDS UP! POLICE!**
+You got caught trying to steal $getServerVar[currency] from **$username[$mentioned[1]]**!
+You couldnt pay **$random[10;30]** $getServerVar[currency] to **$username[$mentioned[1]]** and **4** $getServerVar[currency] to the **Police**!]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
+$endif
+$else
+$if[$isBot[$mentioned[1]]==false]
+$title[<:BOT_THIEF:868904669102108692> ROBBERY]
+$description[<:BOT_NO:868902673301262386> **$username[$mentioned[1]]** is too poor...]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$else
+$title[<:BOT_THIEF:868904669102108692> ROBBERY]
+$description[<:BOT_NO:868902673301262386> **$username[$mentioned[1]]** is a bot... HES TO **POWERFUL**!]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
+$endif
+$else
+$title[<:BOT_THIEF:868904669102108692> ROBBERY]
+$description[<:BOT_NO:868902673301262386> You cant rob yourself...?]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
+$else
+$title[<:BOT_THIEF:868904669102108692> ROBBERY]
+$description[Please do ```g!rob <user>```]
+$footer[$randomText[GOOD BOT;GOOD BOY; GOOD DOG]]
+$color[ffffff]
+$reply
+$endif
