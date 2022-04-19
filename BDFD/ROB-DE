@@ -1,6 +1,10 @@
+Sprache
+BD Script 2
+
 Variablen:
 money
 currency
+
 
 $if[$charCount[$message]>3]
 $if[$username!=$username[$mentioned[>]]]
